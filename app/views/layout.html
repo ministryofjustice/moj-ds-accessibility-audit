@@ -30,6 +30,8 @@
 {% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
 
+{%- from "moj/components/header/macro.njk" import mojHeader -%}
+
 {% block head %}
   {% include "includes/head.html" %}
 {% endblock %}
@@ -40,12 +42,15 @@
 
 {% block header %}
   {% include "includes/cookie-banner.html" %}
-  {# Set serviceName in config.js. #}
-  {{ govukHeader({
-    homepageUrl: "/",
-    serviceName: serviceName,
-    serviceUrl: "/",
-    containerClasses: "govuk-width-container"
+  {{ mojHeader({
+    organisationLabel: {
+      text: 'Ministry of Justice',
+      href: '/'
+    },
+    serviceLabel: {
+      text: serviceName,
+      href: '/'
+    }
   }) }}
 {% endblock %}
 
