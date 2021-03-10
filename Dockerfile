@@ -14,7 +14,6 @@ COPY package*.json ./
 RUN npm install
 
 COPY app/ ./app
-COPY docs/ ./docs
 COPY gulp/ ./gulp
 COPY lib/ ./lib
 COPY *.js ./
