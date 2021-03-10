@@ -1,0 +1,14 @@
+{% extends "instructions.html" %}
+
+{% block pageTitle %}
+  Journey complete
+{% endblock %}
+
+{% block instructions %}
+  <p>You have completed this journey. Please return to <a href="/">the home page</a>, or go back to access the journey again.</p>
+
+  {{ govukButton({
+    href: "/check-password/create-account",
+    text: "Continue"
+  }) }}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "instructions.html" %}
+
+{% block pageTitle %}
+  Check your password
+{% endblock %}
+
+{% block instructions %}
+  <p>On the following page, you'll be asked to create a username and password. The password field will be accompanied by button you can use to toggle whether the password is shown or hidden.</p>
+  <p>Please set a username and password, and use the button to check you have entered your password correctly before continuing.</p>
+
+  {{ govukButton({
+    href: "/check-password/create-account",
+    text: "Continue"
+  }) }}
+{% endblock %}

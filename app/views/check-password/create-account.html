@@ -1,0 +1,40 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Create an account – Check password
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Create an account
+      </h1>
+
+      <form action="/finish-journey">
+        {{ govukInput({
+          type: "text",
+          label: {
+            text: "Username"
+          }
+        }) }}
+
+        {{ govukInput({
+          attributes: {"data-module": "moj-password-reveal"},
+          type: "password",
+          label: {
+            text: "Password"
+          }
+        }) }}
+
+        {{ govukButton({
+          type: 'submit',
+          text: 'Create account'
+        }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
