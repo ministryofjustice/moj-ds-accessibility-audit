@@ -1,0 +1,31 @@
+{% extends "instructions.html" %}
+
+{% block pageTitle %}
+  Find and manage some grants
+{% endblock %}
+
+{% block header %}
+  {{ super() }}
+  {{ mojPrimaryNavigation({
+    label: 'Primary navigation',
+    items: [
+      {
+        text: 'Funds',
+        href: '/funds'
+      },
+      {
+        text: 'Grants',
+        href: '/find-grants/grants'
+      },
+      {
+        text: 'My details',
+        href: '/my-details'
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block instructions %}
+  <p>On the following page you'll be shown a table of grants and a variety of ways to manipulate them. Please use the filter to only show overdue grants. Then select the overdue grants and reject them.</p>
+  <p>Please use the navigation at the top of the page to open the grants page.</p>
+{% endblock %}

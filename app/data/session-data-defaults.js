@@ -18,7 +18,16 @@ Example usage:
 */
 
 module.exports = {
-
-  // Insert values here
-
+  grants: {
+    A375895: ['Olga Dreher', 'Approved', 'green', '29 Jun 2020'],
+    A375896: ['Thando De Laurentis', 'In review', 'purple', '29 Jun 2020'],
+    A375897: ['Leeba Kendall', 'In peer review', 'bright-purple', '29 Jun 2020'],
+    A375899: ['Lacy Spyros', 'Rejected', 'red', '29 Jun 2020'],
+    A375902: ['Clementine Henriksen', 'Overdue', 'black', '12 Feb 2020'],
+    A375903: ['Calfuray Chmiel', 'Withdrawn', 'grey', '29 Jun 2020'],
+    A375911: ['Gofraidh Salzwedel', 'Approved', 'green', '29 Jun 2020'],
+    A375912: ['Hèctor Mateev', 'Approved', 'green', '29 Jun 2020'],
+    A375913: ['Roland Mac Alastair', 'Overdue', 'black', '16 Feb 2020'],
+    A375914: ['Brunihild Van Rompuy', 'Approved', 'green', '29 Jun 2020']
+  }
 }
