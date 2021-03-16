@@ -1,0 +1,229 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Grants – Find and manage some grants
+{% endblock %}
+
+{% block header %}
+  {{ super() }}
+  {{ mojPrimaryNavigation({
+    label: 'Primary navigation',
+    items: [
+    {
+      text: 'Funds',
+      href: '/funds'
+    },
+    {
+      text: 'Grants',
+      href: '/find-grants/grants',
+      active: true
+    },
+    {
+      text: 'My details',
+      href: '/my-details'
+    }
+    ]
+  }) }}
+{% endblock %}
+
+{% macro checkbox(name, id) %}
+  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+    <input type="checkbox" class="govuk-checkboxes__input" id="select-{{ id }}">
+    <label class="govuk-label govuk-checkboxes__label" for="select-{{ id }}">
+      <span class="govuk-visually-hidden">Select {{ name }}</span>
+    </label>
+  </div>
+{% endmacro %}
+
+
+{% block content %}
+    <h1 class="govuk-heading-xl">
+      Grants
+    </h1>
+
+    {% set filterOptionsHtml %}
+      {{ govukInput({
+        id: 'keywords',
+        name: 'keywords',
+        label: {
+          text: 'Keywords',
+          classes: 'govuk-label--m'
+        }
+      }) }}
+
+      {{ govukCheckboxes({
+        idPrefix: 'status',
+        name: 'status[]',
+        classes: "govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: 'Status',
+            classes: 'govuk-fieldset__legend--m'
+          }
+        },
+        items: [
+        {
+          value: 'Approved',
+          text: 'Approved (125)',
+          checked: 'Approved' in data.status
+        },
+        {
+          value: 'In review',
+          text: 'In review (16)',
+          checked: 'In review' in data.status
+        },
+        {
+          value: 'Rejected',
+          text: 'Rejected (850)',
+          checked: 'Rejected' in data.status
+        },
+        {
+          value: 'Overdue',
+          text: 'Overdue (2)',
+          checked: 'Overdue' in data.status
+        }
+        ]
+      }) }}
+    {% endset %}
+
+
+    <div class="moj-filter-layout">
+
+      <div class="moj-filter-layout__filter">
+        <form action="" method="get">
+          {% set items = [] %}
+          {% for status in data.status %}
+            {% set items = (items.push({
+              text: status,
+              href: '#'
+            }), items) %}
+          {% endfor %}
+
+          {{ mojFilter({
+            heading: {
+              text: 'Filter'
+            },
+            selectedFilters: {
+              heading: {
+                text: 'Selected filters'
+              },
+              clearLink: {
+                text: 'Clear filters'
+              },
+              categories: [
+                {
+                  heading: {
+                    text: 'Status'
+                  },
+                  items: items
+                }
+              ]
+            },
+            optionsHtml: filterOptionsHtml
+          }) }}
+        </form>
+      </div>
+
+      <div class="moj-filter-layout__content">
+
+        <div class="moj-action-bar">
+
+          <div class="moj-action-bar__filter"></div>
+
+          {{ mojButtonMenu({
+            items: [{
+              text: 'Reject selected grants',
+              href: '/finish-journey',
+              classes: 'govuk-button--secondary'
+            }, {
+              text: 'Approve selected grants',
+              classes: 'govuk-button--secondary'
+            }]
+          }) }}
+        </div>
+
+        {% set rows = [] %}
+        {% for id, row in data.grants %}
+          {% if row[1] in data.status or data.status == '' %}
+            {% set rows = (rows.push([
+              {html: checkbox(row[0], id)},
+              {html: '<a href="#">' + id + '</a>'},
+              {html: row[0]},
+              {
+                html: govukTag({
+                  text: row[1],
+                  classes: 'moj-tag--' + row[2]
+                })
+              },
+              {text: row[3]}
+            ]),rows) %}
+          {% endif %}
+        {% endfor %}
+
+        {{ govukTable({
+          attributes: {
+            'data-module': 'moj-multi-select',
+            'data-multi-select-checkbox': '#select-all'
+          },
+          firstCellIsHeader: true,
+          head: [
+            {attributes: {id: 'select-all'} },
+            {text: 'Reference'},
+            {text: 'Person'},
+            {text: 'Status'},
+            {text: 'Date of submission'}
+          ],
+          rows: rows
+        }) }}
+
+        {% if data.status == '' %}
+          {{ mojPagination({
+            results: {
+              from: 1,
+              to: 10,
+              count: 993
+            },
+            next: {
+              text: 'Next',
+              href: ''
+            },
+            items: [{
+              text: '1',
+              href: '#',
+              selected: true
+            }, {
+              text: '2',
+              href: '#'
+            }, {
+              text: '3',
+              href: '#'
+            }]
+          }) }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script type="text/javascript">
+    new MOJFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: true,
+      toggleButton: {
+        container: $('.moj-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary'
+      },
+      closeButton: {
+        container: $('.moj-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.moj-filter')
+      }
+    });
+  </script>
+{% endblock %}
