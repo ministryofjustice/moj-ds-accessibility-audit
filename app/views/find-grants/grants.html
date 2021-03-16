@@ -7,6 +7,7 @@ Grants – Find and manage some grants
 
 {% block header %}
   {{ super() }}
+  {% set toggleSearchHtml %}{% include './include-search.html' %}{% endset %}
   {{ mojPrimaryNavigation({
     label: 'Primary navigation',
     items: [
@@ -23,7 +24,8 @@ Grants – Find and manage some grants
       text: 'My details',
       href: '/my-details'
     }
-    ]
+    ],
+    searchHtml: toggleSearchHtml
   }) }}
 {% endblock %}
 

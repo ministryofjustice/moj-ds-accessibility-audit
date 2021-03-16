@@ -1,0 +1,23 @@
+
+  <div class="moj-search-toggle" data-module="moj-search-toggle" data-moj-search-toggle-text="Find grant">
+    <div class="moj-search-toggle__toggle"></div>
+    <div class="moj-search-toggle__search">
+      {{ mojSearch({
+        classes: 'moj-search--ondark moj-search--toggle moj-js-hidden',
+        input: {
+          id: 'search2',
+          name: 'search2'
+        },
+        label: {
+          classes: 'govuk-visually-hidden',
+          text: 'Search'
+        },
+        hint: {
+          text: 'Enter grant ID, for example A123456'
+        },
+        button: {
+          text: 'Search'
+        }
+      }) }}
+    </div>
+  </div>

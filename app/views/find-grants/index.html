@@ -6,6 +6,7 @@
 
 {% block header %}
   {{ super() }}
+  {% set toggleSearchHtml %}{% include './include-search.html' %}{% endset %}
   {{ mojPrimaryNavigation({
     label: 'Primary navigation',
     items: [
@@ -21,7 +22,8 @@
         text: 'My details',
         href: '/my-details'
       }
-    ]
+    ],
+    searchHtml: toggleSearchHtml
   }) }}
 {% endblock %}
 
