@@ -38,6 +38,7 @@ Grants – Find and manage some grants
   </div>
 {% endmacro %}
 
+{{ data.status }}
 
 {% block content %}
     <h1 class="govuk-heading-xl">
@@ -68,22 +69,22 @@ Grants – Find and manage some grants
         {
           value: 'Approved',
           text: 'Approved (125)',
-          checked: 'Approved' in data.status
+          checked: data.status and 'Approved' in data.status
         },
         {
           value: 'In review',
           text: 'In review (16)',
-          checked: 'In review' in data.status
+          checked: data.status and 'In review' in data.status
         },
         {
           value: 'Rejected',
           text: 'Rejected (850)',
-          checked: 'Rejected' in data.status
+          checked: data.status and 'Rejected' in data.status
         },
         {
           value: 'Overdue',
           text: 'Overdue (2)',
-          checked: 'Overdue' in data.status
+          checked: data.status and 'Overdue' in data.status
         }
         ]
       }) }}
@@ -147,7 +148,7 @@ Grants – Find and manage some grants
 
         {% set rows = [] %}
         {% for id, row in data.grants %}
-          {% if row[1] in data.status or data.status == '' %}
+          {% if not data.status or data.status == '' or row[1] in data.status %}
             {% set rows = (rows.push([
               {html: checkbox(row[0], id)},
               {html: '<a href="#">' + id + '</a>'},
@@ -179,7 +180,7 @@ Grants – Find and manage some grants
           rows: rows
         }) }}
 
-        {% if data.status == '' %}
+        {% if not data.status or data.status == '' %}
           {{ mojPagination({
             results: {
               from: 1,
