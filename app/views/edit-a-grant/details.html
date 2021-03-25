@@ -1,0 +1,94 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Green energy grant – Edit a grant
+{% endblock %}
+
+{% block content %}
+  {{ mojPageHeaderActions({
+    heading: {
+      html: '<h1 class="govuk-heading-xl"><span class="govuk-caption-xl">Grant applications</span> Green energy grant</h1>'
+    },
+    items: [{
+      text: 'Edit application',
+      href: '/edit-a-grant/edit-company',
+      classes: 'govuk-button--secondary'
+    }, {
+      text: 'Cancel application',
+      classes: 'govuk-button--warning'
+    }]
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-m">Company details</h2>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Company name"
+            },
+            value: {
+              text: "Sunshine Inc."
+            }
+          },
+          {
+            key: {
+              text: "Date company established"
+            },
+            value: {
+              text: "23 Mar 2016"
+            }
+          },
+          {
+            key: {
+              text: "Contact name"
+            },
+            value: {
+              text: "Arnold Zietz"
+            }
+          },
+          {
+            key: {
+              text: "Contact phone number"
+            },
+            value: {
+              text: "078497482958"
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Application details</h2>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Grant type"
+            },
+            value: {
+              text: "Green energy grant"
+            }
+          },
+          {
+            key: {
+              text: "Amount requested"
+            },
+            value: {
+              text: "£100,000"
+            }
+          },
+          {
+            key: {
+              text: "What will you use the grant for?"
+            },
+            value: {
+              text: "Installing solar panels on office roof"
+            }
+          }
+        ]
+      }) }}
+    </div>
+  </div>
+{% endblock %}

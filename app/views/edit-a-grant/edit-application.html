@@ -1,0 +1,112 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Edit application details – Edit a grant
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/edit-a-grant/edit-company"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">
+    <span class="govuk-caption-xl">Grant applications</span>
+    Edit application details
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form novalidate method="post" action="/edit-a-grant/success">
+        {{ govukRadios({
+          idPrefix: "grant-type",
+          name: "grant-type",
+          fieldset: {
+            legend: {
+              text: "What type of grant are you applying for?",
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          items: [
+            {
+              value: "small",
+              text: "Small business grant"
+            },
+            {
+              value: "transport",
+              text: "Transportation grant"
+            },
+            {
+              value: "green",
+              text: "Green energy grant",
+              checked: true
+            }
+          ]
+        }) }}
+
+        {{ mojCurrencyInput({
+          id: "amount",
+          classes: "govuk-input--width-10",
+          name: "amount",
+          label: {
+            text: "How much money are you applying for?",
+            classes: "govuk-!-font-weight-bold"
+          },
+          value: "100000"
+        }) }}
+
+        {{ govukTextarea({
+          id: 'usecase',
+          name: 'usecase',
+          attributes: {
+            'data-module': 'moj-rich-text-editor',
+            'data-moj-rich-text-editor-toolbar': 'bold,italic,underline,bullets,numbers'
+          },
+          label: {
+            text: 'What will you use the grant for?',
+            classes: 'govuk-!-font-weight-bold'
+          },
+          value: 'Installing solar panels on office roof'
+        }) }}
+
+        {{ govukButton({
+          type: "submit",
+          text: "Save changes"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script type="text/javascript">
+    const validator = new MOJFrontend.FormValidator(document.forms[0]);
+    validator.addValidator('grant-type', [{
+      method: function(field) {
+        return field.value.trim().length > 0;
+      },
+      message: 'Select a grant type'
+    }]);
+    validator.addValidator('amount', [{
+      method: function(field) {
+        return !!field.value.match(/^[0-9 .,]+$/) || field.value.trim().length === 0;
+      },
+      message: 'Enter a valid numeric amount'
+    }]);
+    validator.addValidator('amount', [{
+      method: function(field) {
+        return field.value.trim().length > 0;
+      },
+      message: 'Enter the amount of grant money you are requesting'
+    }]);
+    validator.addValidator('usecase', [{
+      method: function(field) {
+        return field.value.trim().length > 100;
+      },
+      message: 'Please use at least 100 characters to tell us what you\'ll use the grant money for'
+    }]);
+  </script>
+{% endblock %}

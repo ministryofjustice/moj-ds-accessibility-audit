@@ -1,0 +1,144 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Edit company details – Edit a grant
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/edit-a-grant/details"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">
+    <span class="govuk-caption-xl">Grant applications</span>
+    Edit company details
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form novalidate method="post" action="/edit-a-grant/edit-application">
+        {{ govukInput({
+          label: {
+            text: "Company name",
+            classes: 'govuk-!-font-weight-bold'
+          },
+          id: "company-name",
+          name: "company-name",
+          value: "Sunshine Inc."
+        }) }}
+
+        {{ govukDateInput({
+          id: "company-date",
+          namePrefix: "company-date",
+          fieldset: {
+            legend: {
+              text: "Date company established",
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          hint: {
+            text: "For example, 31 3 1980"
+          },
+          items: [
+            {
+              classes: "govuk-input--width-2",
+              name: "day",
+              value: "23"
+            },
+            {
+              classes: "govuk-input--width-2",
+              name: "month",
+              value: "3"
+            },
+            {
+              classes: "govuk-input--width-4",
+              name: "year",
+              value: "2016"
+            }
+          ]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Contact name",
+            classes: 'govuk-!-font-weight-bold'
+          },
+          id: "contact-name",
+          name: "contact-name",
+          value: "Arnold Zietz"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Contact phone number",
+            classes: 'govuk-!-font-weight-bold'
+          },
+          id: "contact-phone",
+          name: "contact-phone",
+          value: "078497482958",
+          classes: "govuk-input--width-10"
+        }) }}
+
+        {{ govukButton({
+          type: "submit",
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script type="text/javascript">
+    const validator = new MOJFrontend.FormValidator(document.forms[0]);
+    validator.addValidator('company-name', [{
+      method: function(field) {
+        return field.value.trim().length > 0;
+      },
+      message: 'Enter the name of your company'
+    }, {
+      method: function(field) {
+        return field.value.trim().length <= 100;
+      },
+      message: 'Your company\'s name can be a maximum of 100 characters'
+    }]);
+    validator.addValidator('company-date-day', [{
+      method: function(field, params) {
+        return (params.day.value.length !== 0 && params.month.value.length !== 0 && params.year.value !== 0);
+      },
+      message: 'Enter the date your company was established',
+      params: {
+        day: document.getElementById('company-date-day'),
+        month: document.getElementById('company-date-month'),
+        year: document.getElementById('company-date-year')
+      }
+    }, {
+      method: function(field, params) {
+        var d = new Date(parseInt(params.year.value, 10), parseInt(params.month.value, 10) - 1, parseInt(params.day.value, 10) - 1);
+        return d instanceof Date && !isNaN(d);
+      },
+      message: 'Enter a valid establishment date',
+      params: {
+        day: document.getElementById('company-date-day'),
+        month: document.getElementById('company-date-month'),
+        year: document.getElementById('company-date-year')
+      }
+    }]);
+    validator.addValidator('contact-name', [{
+      method: function(field) {
+        return field.value.trim().length > 0;
+      },
+      message: 'Enter the name of the contact at your company'
+    }]);
+    validator.addValidator('contact-phone', [{
+      method: function(field) {
+        return field.value.trim().length > 0;
+      },
+      message: 'Enter the phone number of your company contact'
+    }]);
+  </script>
+{% endblock %}
