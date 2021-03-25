@@ -1,0 +1,14 @@
+{% extends "instructions.html" %}
+
+{% block pageTitle %}
+  Edit a grant
+{% endblock %}
+
+{% block instructions %}
+  <p>On the following page you'll see a grant application that's in progress. Please review the application, then edit its details. Please attempt to enter invalid information to the form to test validation.</p>
+
+  {{ govukButton({
+    href: "/edit-a-grant/details",
+    text: "Continue"
+  }) }}
+{% endblock %}

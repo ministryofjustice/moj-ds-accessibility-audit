@@ -1,0 +1,12 @@
+
+{% extends "edit-a-grant/details.html" %}
+
+{% block content %}
+  {{ mojBanner({
+    type: 'success',
+    text: 'You have successfully updated your grant application.',
+    iconFallbackText: 'Success'
+  }) }}
+
+  {{ super() }}
+{% endblock %}
