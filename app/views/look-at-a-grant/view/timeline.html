@@ -1,0 +1,177 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Look at a grant - Rainfall Partners LLC
+{% endblock %}
+
+{% block header %}
+  {{ super() }}
+
+  <div class="govuk-width-container">
+    {{ mojOrganisationSwitcher({
+      text: 'Sunshine Inc.',
+      link: {
+        text: 'Change organisation',
+        href: '/look-at-a-grant/switch-organisation'
+      }
+    }) }}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Grants</span>
+        Small business grant
+      </h1>
+
+      {{ mojSubNavigation({
+        label: 'Sub navigation',
+        items: [{
+          text: 'Details',
+          href: '/look-at-a-grant/view'
+        }, {
+          text: 'Timeline',
+          href: '/look-at-a-grant/view/timeline',
+          active: true
+        }, {
+          text: 'Payments',
+          href: '/look-at-a-grant/view/payments'
+        }, {
+          text: 'Auditors',
+          href: '/look-at-a-grant/view/auditors'
+        }]
+      }) }}
+
+      {%- set approvalHtml %}
+        <p>Your application for a small business grant was approved without caveat. Please note that the grant amount is lower than you originally requested.</p>
+        {{ govukButton({
+          href: '#',
+          type: 'secondary',
+          text: 'View full approval',
+          classes: 'govuk-button--secondary govuk-!-margin-bottom-0'
+        }) }}
+      {% endset -%}
+
+      {%- set detailsHtml %}
+        <details class="govuk-details govuk-!-margin-bottom-0">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Application details
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            {{ govukSummaryList({
+              rows: [
+                {
+                  key: {
+                    text: "Grant type"
+                  },
+                  value: {
+                    text: "Small business grant"
+                  }
+                },
+                {
+                  key: {
+                    text: "Grant amount requested"
+                  },
+                  value: {
+                    text: "£100,000"
+                  }
+                },
+                {
+                  key: {
+                    text: "Company address"
+                  },
+                  value: {
+                    html: "72 Guild Street<br>London<br>SE23 6FH"
+                  }
+                },
+                {
+                  key: {
+                    text: "Contact contact"
+                  },
+                  value: {
+                    html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
+                  }
+                }
+              ]
+            }) }}
+          </div>
+        </details>
+      {% endset -%}
+
+      {%- set applicationStartedHtml %}
+        <ul class="moj-timeline__documents">
+          <li class="moj-timeline__document-item">
+            <a class="moj-timeline__document-link" href="#">Application form</a>
+          </li>
+          <li class="moj-timeline__document-item">
+            <a class="moj-timeline__document-link" href="#">Supporting evidence</a>
+          </li>
+        </ul>
+      {% endset -%}
+
+      <h2 class="govuk-heading-m">Application timeline</h2>
+
+      {{ mojTimeline({
+      items: [
+      {
+        label: {
+          text: "Application approved"
+        },
+        html: approvalHtml,
+        datetime: {
+          timestamp: "2019-06-14T14:01:00.000Z",
+          type: "datetime"
+        },
+        byline: {
+          text: "Case work team"
+        }
+      },
+      {
+        label: {
+          text:  "Application received"
+        },
+        text: "Your application has been received – reference GT-9520-9502",
+        datetime: {
+          timestamp: "2019-06-06T09:12:00.000Z",
+          type: "datetime"
+        },
+        byline: {
+          text: "Case work team"
+        }
+      },
+      {
+        label: {
+          text:  "Application submitted"
+        },
+        html: detailsHtml,
+        datetime: {
+          timestamp: "2019-05-28T10:45:00.000Z",
+          type: "datetime"
+        },
+        byline: {
+          text: "Lamar Paprocki"
+        }
+      },
+      {
+        label: {
+          text:  "Application started"
+        },
+        html: applicationStartedHtml,
+        datetime: {
+          timestamp: "2019-05-21T13:15:00.000Z",
+          type: "datetime"
+        },
+        byline: {
+          text: "Lamar Paprocki"
+        }
+      }
+      ]
+      }) }}
+    </div>
+  </div>
+
+{% endblock %}
