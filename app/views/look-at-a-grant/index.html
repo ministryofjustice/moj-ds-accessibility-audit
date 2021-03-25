@@ -1,0 +1,14 @@
+{% extends "instructions.html" %}
+
+{% block pageTitle %}
+  Look at a grant
+{% endblock %}
+
+{% block instructions %}
+  <p>On the following page you'll see a list of grants submitted by one of your organisations. Please switch to select your "Sunshine Inc." organisation, select one of the cases and use the application to read its details.</p>
+
+  {{ govukButton({
+    href: "/look-at-a-grant/grants-rainfall",
+    text: "Continue"
+  }) }}
+{% endblock %}

@@ -30,12 +30,15 @@
 {% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
 
-{%- from "moj/components/button-menu/macro.njk"        import mojButtonMenu -%}
-{%- from "moj/components/filter/macro.njk"             import mojFilter -%}
-{%- from "moj/components/header/macro.njk"             import mojHeader -%}
-{%- from "moj/components/pagination/macro.njk"         import mojPagination -%}
-{%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
-{%- from "moj/components/search/macro.njk"             import mojSearch -%}
+{%- from "moj/components/banner/macro.njk"                import mojBanner -%}
+{%- from "moj/components/button-menu/macro.njk"           import mojButtonMenu -%}
+{%- from "moj/components/filter/macro.njk"                import mojFilter -%}
+{%- from "moj/components/header/macro.njk"                import mojHeader -%}
+{%- from "moj/components/organisation-switcher/macro.njk" import mojOrganisationSwitcher -%}
+{%- from "moj/components/pagination/macro.njk"            import mojPagination -%}
+{%- from "moj/components/primary-navigation/macro.njk"    import mojPrimaryNavigation -%}
+{%- from "moj/components/search/macro.njk"                import mojSearch -%}
+{%- from "moj/components/ticket-panel/macro.njk"          import mojTicketPanel -%}
 
 {% block head %}
   {% include "includes/head.html" %}
