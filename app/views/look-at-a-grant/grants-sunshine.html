@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Look at a grant - Sunshine Inc
+{% endblock %}
+
+{% block header %}
+  {{ super() }}
+
+  <div class="govuk-width-container">
+    {{ mojOrganisationSwitcher({
+      text: 'Sunshine Inc',
+      link: {
+        text: 'Change organisation',
+        href: '/look-at-a-grant/switch-organisation'
+      }
+    }) }}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Grants</span>
+        Sunshine Inc
+      </h1>
+
+
+      {{ mojTicketPanel({
+        attributes: {
+          'aria-label': 'Grants awarded to Sunshine Inc'
+        },
+        items: [{
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Small business grant</h2>
+          <p class="govuk-body">Grant available to businesses with annual turnover of less than £500,000</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" href="/look-at-a-grant/view" data-module="govuk-button">
+            View grant
+          </a>',
+          classes: 'moj-ticket-panel__content--red',
+          attributes: {
+            'aria-label': 'Small business grant'
+          }
+        }, {
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Transportation grant</h2>
+          <p class="govuk-body">Grant available to cover costs of leasing one fully-electric vehicle for company use</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" href="/look-at-a-grant/view" data-module="govuk-button">
+            View grant
+          </a>',
+          attributes: {
+            'aria-label': 'Transportation grant'
+          }
+        }, {
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Green energy grant</h2>
+          <p class="govuk-body">Grant available to subsidise installation of green energy generator in company offices</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" href="/look-at-a-grant/view" data-module="govuk-button">
+            View grant
+          </a>',
+          attributes: {
+            'aria-label': 'Green energy grant'
+          }
+        }]
+      }) }}
+    </div>
+  </div>
+{% endblock %}

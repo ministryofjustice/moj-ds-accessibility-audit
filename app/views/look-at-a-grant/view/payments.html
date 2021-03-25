@@ -1,0 +1,154 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Look at a grant - Rainfall Partners LLC
+{% endblock %}
+
+{% block header %}
+  {{ super() }}
+
+  <div class="govuk-width-container">
+    {{ mojOrganisationSwitcher({
+      text: 'Sunshine Inc.',
+      link: {
+        text: 'Change organisation',
+        href: '/look-at-a-grant/switch-organisation'
+      }
+    }) }}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Grants</span>
+        Small business grant
+      </h1>
+
+      {{ mojSubNavigation({
+        label: 'Sub navigation',
+        items: [{
+          text: 'Details',
+          href: '/look-at-a-grant/view'
+        }, {
+          text: 'Timeline',
+          href: '/look-at-a-grant/view/timeline'
+        }, {
+          text: 'Payments',
+          href: '/look-at-a-grant/view/payments',
+          active: true
+        }, {
+          text: 'Auditors',
+          href: '/look-at-a-grant/view/auditors'
+        }]
+      }) }}
+
+      <h2 class="govuk-heading-m">Payments</h2>
+
+      {{ govukTable({
+        attributes: {
+          'data-module': 'moj-sortable-table'
+        },
+        head: [
+          {
+            text: "Date",
+            attributes: {
+              "aria-sort": "ascending"
+            }
+          },
+          {
+            text: "Amount",
+            attributes: {
+              "aria-sort": "none"
+            }
+          },
+          {
+            text: "Status",
+            attributes: {
+              "aria-sort": "none"
+            }
+          },
+          {
+            text: "Reference",
+            attributes: {
+              "aria-sort": "none"
+            }
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "21 August 2019",
+              attributes: {
+                "data-sort-value": "2019-08-21"
+              }
+            },
+            {
+              text: "£1,000",
+              attributes: {
+                "data-sort-value": "1000"
+              }
+            },
+            {
+              html: mojBadge({
+                text: 'Paid',
+                classes: 'moj-badge--green'
+              })
+            },
+            {
+              text: "MT-C-482958"
+            }
+          ],
+          [
+            {
+              text: "21 September 2019",
+              attributes: {
+                "data-sort-value": "2019-09-21"
+              }
+            },
+            {
+              text: "£1,750",
+              attributes: {
+                "data-sort-value": "1750"
+              }
+            },
+            {
+              html: mojBadge({
+                text: 'Paid',
+                classes: 'moj-badge--green'
+              })
+            },
+            {
+              text: "MT-C-018928"
+            }
+          ],
+          [
+            {
+              text: "21 October 2019",
+              attributes: {
+                "data-sort-value": "2019-10-21"
+              }
+            },
+            {
+              text: "£1,000",
+              attributes: {
+                "data-sort-value": "1000"
+              }
+            },
+            {
+              html: mojBadge({
+                text: 'Payment details invalid',
+                classes: 'moj-badge--red'
+              })
+            },
+            {
+              text: "MT-C-528894"
+            }
+          ]
+        ]
+      }) }}
+    </div>
+  </div>
+
+{% endblock %}
