@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Look at a grant - Rainfall Partners LLC
+{% endblock %}
+
+{% block header %}
+  {{ super() }}
+
+  <div class="govuk-width-container">
+    {{ mojOrganisationSwitcher({
+      text: 'Sunshine Inc.',
+      link: {
+        text: 'Change organisation',
+        href: '/look-at-a-grant/switch-organisation'
+      }
+    }) }}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Grants</span>
+        Small business grant
+      </h1>
+
+      {{ mojSubNavigation({
+        label: 'Sub navigation',
+        items: [{
+          text: 'Details',
+          href: '/look-at-a-grant/view'
+        }, {
+          text: 'Timeline',
+          href: '/look-at-a-grant/view/timeline'
+        }, {
+          text: 'Payments',
+          href: '/look-at-a-grant/view/payments'
+        }, {
+          text: 'Auditors',
+          href: '/look-at-a-grant/view/auditors',
+          active: true
+        }]
+      }) }}
+
+      <h2 class="govuk-heading-m">Auditors</h2>
+      <p>You have not yet formally appointed an auditor. You must do this before the resolution of the grant.</p>
+
+      <h3 class="govuk-heading-s">Find an auditor</h3>
+      {{ mojSearch({
+        input: {
+          name: 'q'
+        },
+        label: {
+          classes: 'govuk-visually-hidden',
+          text: 'Search'
+        },
+        hint: {
+          text: 'Enter your town, city or county to search for an approved auditor in your area'
+        },
+        button: {
+          text: 'Search'
+        }
+      }) }}
+    </div>
+  </div>
+
+{% endblock %}

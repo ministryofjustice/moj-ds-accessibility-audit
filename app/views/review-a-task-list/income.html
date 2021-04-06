@@ -1,0 +1,80 @@
+{% extends "instructions.html" %}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/date-input/macro.njk" import govukDateInput -%}
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+{%- from "govuk/components/input/macro.njk" import govukInput -%}
+{%- from "govuk/components/textarea/macro.njk" import govukTextarea -%}
+
+{% block pageTitle %}
+  Income
+{% endblock %}
+
+{% block content %}
+
+<div data-module="moj-add-another">
+
+  <h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Add income</h1>
+
+    <form method="post">
+
+      {% call govukFieldset({
+      classes: 'moj-add-another__item',
+      legend: {
+      text: 'Income',
+      classes: 'moj-add-another__title govuk-fieldset__legend--m',
+      isPageHeading: false
+      }
+      }) %}
+
+      {{ govukInput({
+      id: 'person[0][first_name]',
+      name: 'person[0][first_name]',
+      label: {
+      html: 'Source of income',
+      classes: 'govuk-!-font-weight-bold'
+      },
+      attributes: {
+      'data-name': 'person[%index%][first_name]',
+      'data-id': 'person[%index%][first_name]'
+      }
+      }) }}
+
+      {{ govukInput({
+      id: 'person[0][last_name]',
+      name: 'person[0][last_name]',
+      label: {
+      html: 'Amount',
+      classes: 'govuk-!-font-weight-bold'
+      },
+      attributes: {
+      'data-name': 'person[%index%][last_name]',
+      'data-id': 'person[%index%][last_name]'
+      }
+      }) }}
+
+      {% endcall %}
+
+      <div class="moj-button-action">
+        {{ govukButton({
+        text: 'Add another income',
+        classes: 'govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4'
+        }) }}
+      </div>
+
+      <div class="moj-button-action">
+        {{ govukButton({
+        text: 'Submit'
+        }) }}
+      </div>
+
+    </form>
+
+</div>
+
+
+{{ govukButton({
+href: "/review-a-task-list/review-a-task-list-simon",
+text: "Continue"
+}) }}
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Look at a grant - Rainfall Partners LLC
+{% endblock %}
+
+{% block header %}
+  {{ super() }}
+
+  <div class="govuk-width-container">
+    {{ mojOrganisationSwitcher({
+      text: 'Rainfall Partners LLC',
+      link: {
+        text: 'Change organisation',
+        href: '/look-at-a-grant/switch-organisation'
+      }
+    }) }}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Grants</span>
+        Rainfall Partners LLC
+      </h1>
+
+      {{ mojBanner({
+        type: 'information',
+        text: 'Rainfall Partners LLC does not have any grants.',
+        iconFallbackText: 'information'
+      }) }}
+    </div>
+  </div>
+
+{% endblock %}

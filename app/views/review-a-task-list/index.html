@@ -5,7 +5,15 @@
 {% endblock %}
 
 {% block instructions %}
-  <p>On the following page you'll be shown a table of grants and a variety of ways to manipulate them. Please use the filter to only show overdue grants. Then select the overdue grants and reject them.</p>
+  <p>On the following page you'll be shown a table of grants and a variety of ways to manipulate them.</p>
+
+  <ol class="govuk-list govuk-list--number">
+    <li>Change to the task list for Simon.</li>
+    <li>Review the task list and see which task isn't completed</li>
+    <li>Go to the income section</li>
+    <li>Add two incomes</li>
+    <li>Use the buttons at the bottom of the page to return back to the home page</li>
+  </ol>
 
   {{ govukButton({
   href: "/review-a-task-list/review-a-task-list",
