@@ -1,0 +1,15 @@
+{% extends "instructions.html" %}
+
+{% block pageTitle %}
+  Review a task list
+{% endblock %}
+
+{% block instructions %}
+  <p>On the following page you'll be shown a table of grants and a variety of ways to manipulate them. Please use the filter to only show overdue grants. Then select the overdue grants and reject them.</p>
+
+  {{ govukButton({
+  href: "/review-a-task-list/review-a-task-list",
+  text: "Continue"
+  }) }}
+
+{% endblock %}
