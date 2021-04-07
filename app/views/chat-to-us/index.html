@@ -1,0 +1,19 @@
+{% extends "instructions.html" %}
+
+{% block pageTitle %}
+Chat to us
+{% endblock %}
+
+{% block instructions %}
+<ol class="govuk-list govuk-list--number">
+  <li>Read through the menu items.</li>
+  <li>Identify which of the menu items you're currently on.</li>
+  <li>Identify how many unread messages there are.</li>
+  <li>Read through the messages, and find out the time the last message was sent, by who, and what it's about.</li>
+</ol>
+
+{{ govukButton({
+href: "/chat-to-us/chat-to-us",
+text: "Continue"
+}) }}
+{% endblock %}
