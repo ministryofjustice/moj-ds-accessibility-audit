@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{%- from "moj/components/banner/macro.njk" import mojBanner -%}
+{%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
+{%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+
+{% block pageTitle %}
+Upload documents
+{% endblock %}
+
+
+{% block content %}
+
+{% set bannerHtml %}
+<h2 class="govuk-heading-m">This service will be unavailable from 1 June 2021</h2>
+{% endset %}
+
+{{ mojBanner({
+type: 'information',
+html: bannerHtml
+}) }}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if errorSummary.items.length %}
+    {{ govukErrorSummary({
+    titleText: 'There is a problem',
+    errorList: errorSummary.items
+    }) }}
+    {% endif %}
+
+    <h1 class="govuk-heading-xl">Upload files</h1>
+
+    <form action="/" method="post" enctype="multipart/form-data">
+      {% set uploadHtml %}
+      {{ govukFileUpload({
+      id: "documents",
+      name: "documents",
+      classes: 'moj-multi-file-upload__input',
+      label: {
+      text: "Upload a file",
+      classes: 'govuk-label--m'
+      },
+      attributes: { multiple: '' },
+      errorMessage: errorMessage
+      }) }}
+
+      {{govukButton({
+      text: 'Upload file',
+      classes: 'govuk-button--secondary moj-multi-file-upload__button'
+      })}}
+      {% endset %}
+
+      {{ mojMultiFileUpload({
+      uploadedFiles: {
+      heading: { text: 'Files added' },
+      items: uploadedFiles
+      },
+      uploadHtml: uploadHtml
+      }) }}
+
+      {{govukButton({
+      text: 'Continue'
+      })}}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

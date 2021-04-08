@@ -1,0 +1,14 @@
+{% extends "instructions.html" %}
+
+{% block pageTitle %}
+Provide some documents
+{% endblock %}
+
+{% block instructions %}
+<p>On the following page you'll see a grant application that's in progress. Read the banner, and upload two documents.</p>
+
+{{ govukButton({
+href: "/provide-some-documents/provide-some-documents",
+text: "Continue"
+}) }}
+{% endblock %}
