@@ -5,7 +5,14 @@ Provide some documents
 {% endblock %}
 
 {% block instructions %}
-<p>On the following page, there is a file upload form. Read the banner, and upload two documents.</p>
+<p>On the following page, there is a file upload form. The steps are:
+</p>
+
+<ol class="govuk-list govuk-list--number">
+  <li>Read the banner</li>
+  <li>Try to upload an image</li>
+  <li>Upload two PDFs</li>
+</ol>
 
 {{ govukButton({
 href: "/provide-some-documents/provide-some-documents",
