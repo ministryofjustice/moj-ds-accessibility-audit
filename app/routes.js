@@ -16,7 +16,10 @@ router.post('/ajax-upload', function (req, res) {
   }
 
   res.status(200).json({
-    success: { messageHtml: 'File uploaded', messageText: 'File uploaded' },
+    success: {
+      messageHtml: req.files.documents.name + ' successfully uploaded',
+      messageText: req.files.documents.name + ' successfully uploaded'
+    },
     file: { name: req.files.documents.name, filename: req.files.documents.name, originalname: req.files.documents.name }
   })
 })
