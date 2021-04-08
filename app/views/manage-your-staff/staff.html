@@ -1,0 +1,261 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Manage your staff
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">
+    Manage your staff
+  </h1>
+
+  <div class="govuk-tabs" data-module="govuk-tabs">
+    <h2 class="govuk-tabs__title">Manage your staff</h2>
+
+    <ul class="govuk-tabs__list" role='tablist'>
+      <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+        <a class="govuk-tabs__tab" href="#active_probation_poms">
+          Active Probation officer POMs (4)
+        </a>
+      </li>
+      <li class="govuk-tabs__list-item">
+        <a class="govuk-tabs__tab" href="#active_prison_poms">
+          Active Prison officer POMs (2)
+        </a>
+      </li>
+      <li class="govuk-tabs__list-item">
+        <a class="govuk-tabs__tab" href="#inactive_poms">
+          Inactive staff (0)
+        </a>
+      </li>
+    </ul>
+
+    <section class="govuk-tabs__panel" id="active_probation_poms">
+      <h2 class="govuk-heading-m">Active Probation officer POMs</h2>
+
+      <figure class="case-mix-key">
+        <figcaption class="govuk-heading-s">Case mix by tier</figcaption>
+        <ul>
+          <li>
+            <span class="case-mix-key__swatch case-mix__tier-a"></span>
+            Tier A
+          </li>
+          <li>
+            <span class="case-mix-key__swatch case-mix__tier-b"></span>
+            Tier B
+          </li>
+          <li>
+            <span class="case-mix-key__swatch case-mix__tier-c"></span>
+            Tier C
+          </li>
+          <li>
+            <span class="case-mix-key__swatch case-mix__tier-d"></span>
+            Tier D
+          </li>
+          <li>
+            <span class="case-mix-key__swatch case-mix__tier-na"></span>
+            Tier N/A
+          </li>
+        </ul>
+      </figure>
+
+      <table class="govuk-table responsive">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header govuk-!-width-one-quarter" scope="col">POM</th>
+            <th class="govuk-table__header" scope="col">Working pattern</th>
+            <th class="govuk-table__header" scope="col">Status</th>
+            <th class="govuk-table__header govuk-!-width-one-quarter" scope="col">Case mix by tier</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">High complexity cases</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Total cases</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td aria-label="POM" class="govuk-table__cell">
+              <a href="#">Stephen Dicks</a>
+            </td>
+            <td aria-label="Working pattern" class="govuk-table__cell">Part time - 0.5</td>
+            <td aria-label="Status" class="govuk-table__cell">Available</td>
+            <td aria-label="Case mix by tier" class="govuk-table__cell">
+              <dl class="case-mix-bar" style="--columns: 0 10fr 0 6fr 0 2fr;">
+                <dt>Tier A</dt>
+                <dd title="Tier A" class="case-mix__tier-a">10</dd>
+                <dt>Tier B</dt>
+                <dd title="Tier B" class="case-mix__tier-b">6</dd>
+                <dt>Tier C</dt>
+                <dd title="Tier C" class="case-mix__tier-c">2</dd>
+              </dl>
+            </td>
+            <td aria-label="High complexity cases" class="govuk-table__cell govuk-table__cell--numeric">0</td>
+            <td aria-label="Total cases" class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">18</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td aria-label="POM" class="govuk-table__cell">
+              <a href="#">Laura Jara-Duncan</a>
+            </td>
+            <td aria-label="Working pattern" class="govuk-table__cell">Full time</td>
+            <td aria-label="Status" class="govuk-table__cell">Available</td>
+            <td aria-label="Case mix by tier" class="govuk-table__cell">
+              <dl class="case-mix-bar" style="--columns: 0 15fr 0 10fr 0 3fr 0 1fr;">
+                <dt>Tier B</dt>
+                <dd title="Tier B" class="case-mix__tier-b">15</dd>
+                <dt>Tier C</dt>
+                <dd title="Tier C" class="case-mix__tier-c">10</dd>
+                <dt>Tier D</dt>
+                <dd title="Tier D" class="case-mix__tier-d">3</dd>
+                <dt>Tier N/A</dt>
+                <dd title="Tier N/A" class="case-mix__tier-na">1</dd>
+              </dl>
+            </td>
+            <td aria-label="High complexity cases" class="govuk-table__cell govuk-table__cell--numeric">0</td>
+            <td aria-label="Total cases" class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">29</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td aria-label="POM" class="govuk-table__cell">
+              <a href="#">Kian Buckley</a>
+            </td>
+            <td aria-label="Working pattern" class="govuk-table__cell">Part time - 0.8</td>
+            <td aria-label="Status" class="govuk-table__cell">Available</td>
+            <td aria-label="Case mix by tier" class="govuk-table__cell">
+              <dl class="case-mix-bar" style="--columns: 0 2fr 0 8fr 0 4fr 0 3fr;">
+                <dt>Tier A</dt>
+                <dd title="Tier A" class="case-mix__tier-a">2</dd>
+                <dt>Tier B</dt>
+                <dd title="Tier B" class="case-mix__tier-b">8</dd>
+                <dt>Tier C</dt>
+                <dd title="Tier C" class="case-mix__tier-c">4</dd>
+                <dt>Tier D</dt>
+                <dd title="Tier D" class="case-mix__tier-d">3</dd>
+              </dl>
+            </td>
+            <td aria-label="High complexity cases" class="govuk-table__cell govuk-table__cell--numeric">0</td>
+            <td aria-label="Total cases" class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">17</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td aria-label="POM" class="govuk-table__cell">
+              <a href="#">Alexandra Edwards</a>
+            </td>
+            <td aria-label="Working pattern" class="govuk-table__cell">Full time</td>
+            <td aria-label="Status" class="govuk-table__cell">Available</td>
+            <td aria-label="Case mix by tier" class="govuk-table__cell">
+              <dl class="case-mix-bar" style="--columns: 0 2fr 0 2fr 0 9fr 0 17fr;">
+                <dt>Tier A</dt>
+                <dd title="Tier A" class="case-mix__tier-a">2</dd>
+                <dt>Tier B</dt>
+                <dd title="Tier B" class="case-mix__tier-b">2</dd>
+                <dt>Tier C</dt>
+                <dd title="Tier C" class="case-mix__tier-c">9</dd>
+                <dt>Tier D</dt>
+                <dd title="Tier D" class="case-mix__tier-d">17</dd>
+              </dl>
+            </td>
+            <td aria-label="High complexity cases" class="govuk-table__cell govuk-table__cell--numeric">0</td>
+            <td aria-label="Total cases" class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">30</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="govuk-tabs__panel" id="active_prison_poms">
+      <h2 class="govuk-heading-m">Active Prison officer POMs</h2>
+
+      <figure class="case-mix-key">
+        <figcaption class="govuk-heading-s">Case mix by tier</figcaption>
+        <ul>
+          <li>
+            <span class="case-mix-key__swatch case-mix__tier-a"></span>
+            Tier A
+          </li>
+          <li>
+            <span class="case-mix-key__swatch case-mix__tier-b"></span>
+            Tier B
+          </li>
+          <li>
+            <span class="case-mix-key__swatch case-mix__tier-c"></span>
+            Tier C
+          </li>
+          <li>
+            <span class="case-mix-key__swatch case-mix__tier-d"></span>
+            Tier D
+          </li>
+          <li>
+            <span class="case-mix-key__swatch case-mix__tier-na"></span>
+            Tier N/A
+          </li>
+        </ul>
+      </figure>
+
+      <table class="govuk-table responsive">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header govuk-!-width-one-quarter" scope="col">POM</th>
+            <th class="govuk-table__header" scope="col">Working pattern</th>
+            <th class="govuk-table__header" scope="col">Status</th>
+            <th class="govuk-table__header govuk-!-width-one-quarter" scope="col">Case mix by tier</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">High complexity cases</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Total cases</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td aria-label="POM" class="govuk-table__cell">
+              <a href="#">Katy McCann</a>
+            </td>
+            <td aria-label="Working pattern" class="govuk-table__cell">Full time</td>
+            <td aria-label="Status" class="govuk-table__cell">Available</td>
+            <td aria-label="Case mix by tier" class="govuk-table__cell">
+              <dl class="case-mix-bar" style="--columns: 0 5fr 0 7fr 0 11fr;">
+                <dt>Tier A</dt>
+                <dd title="Tier A" class="case-mix__tier-a">5</dd>
+                <dt>Tier B</dt>
+                <dd title="Tier B" class="case-mix__tier-b">7</dd>
+                <dt>Tier C</dt>
+                <dd title="Tier C" class="case-mix__tier-c">11</dd>
+              </dl>
+            </td>
+            <td aria-label="High complexity cases" class="govuk-table__cell govuk-table__cell--numeric">0</td>
+            <td aria-label="Total cases" class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">23</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td aria-label="POM" class="govuk-table__cell">
+              <a href="#">Ollie Treend</a>
+            </td>
+            <td aria-label="Working pattern" class="govuk-table__cell">Part time - 0.2</td>
+            <td aria-label="Status" class="govuk-table__cell">Available</td>
+            <td aria-label="Case mix by tier" class="govuk-table__cell"></td>
+            <td aria-label="High complexity cases" class="govuk-table__cell govuk-table__cell--numeric">0</td>
+            <td aria-label="Total cases" class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="govuk-tabs__panel" id="inactive_poms">
+      <h2 class="govuk-heading-m">Inactive staff</h2>
+
+      <table class="govuk-table responsive tablesorter">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">POM</th>
+            <th class="govuk-table__header" scope="col">POM type</th>
+            <th class="govuk-table__header" scope="col">Total cases</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  {{ mojButtonMenu({
+    items: [{
+    text: "Continue",
+    href: "/finish-journey",
+    classes: "govuk-button--primary"
+    }]
+  }) }}
+
+{% endblock %}
