@@ -8,24 +8,27 @@
 Create an account – Check password
 {% endblock %}
 
-{% block content %}
+{% block header %}
+{{ super() }}
 
+{{ mojIdentityBar({
+  title: {
+    html: "<b>Simon Wolenksy</b>"
+  },
+  menus: [{
+    items: [
+    {
+      text: 'Change client',
+      href: 'change-client'
+    }]
+  }]
+}) }}
+{% endblock %}
+
+{% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
-    {{ mojIdentityBar({
-      title: {
-      html: "<b>Simon Wolenksy</b>"
-      },
-      menus: [{
-        items: [
-        {
-          text: 'Change client',
-          href: 'change-client'
-        }]
-      }]
-    }) }}
 
     <h1 class="govuk-heading-xl govuk-!-margin-top-6">
       Task list
