@@ -1,0 +1,13 @@
+{% extends "provide-some-documents/provide-some-documents.html" %}
+
+{% set errorMessage = 'Invalid file type uploaded' %}
+{% set errorSummary = {
+  items: [{
+    text: 'Invalid file type uploaded',
+    href: '#documents'
+  }]
+} %}
+
+{% block content %}
+  {{ super() }}
+{% endblock %}

@@ -26,15 +26,20 @@ html: bannerHtml
   <div class="govuk-grid-column-two-thirds">
 
     {% if errorSummary.items.length %}
-    {{ govukErrorSummary({
-    titleText: 'There is a problem',
-    errorList: errorSummary.items
-    }) }}
+      {{ govukErrorSummary({
+        titleText: 'There is a problem',
+        errorList: errorSummary.items
+      }) }}
+    {% endif %}
+    {% if errorMessage %}
+      {% set errorMessageObj = { text: errorMessage } %}
     {% endif %}
 
     <h1 class="govuk-heading-xl">Upload files</h1>
 
-    <form action="" method="post">
+    <p class="govuk-body">We only accept PDF (<code>.pdf</code>) files</p>
+
+    <form action="/provide-some-documents/provide-some-documents" method="post" encType="multipart/form-data">
       {% set uploadHtml %}
       {{ govukFileUpload({
       id: "documents",
@@ -45,7 +50,7 @@ html: bannerHtml
       classes: 'govuk-label--m'
       },
       attributes: { multiple: '' },
-      errorMessage: errorMessage
+      errorMessage: errorMessageObj
       }) }}
 
       {{govukButton({
@@ -57,7 +62,7 @@ html: bannerHtml
       {{ mojMultiFileUpload({
       uploadedFiles: {
       heading: { text: 'Files added' },
-      items: uploadedFiles
+      items: []
       },
       uploadHtml: uploadHtml
       }) }}
@@ -76,8 +81,8 @@ html: bannerHtml
   if (typeof MOJFrontend.MultiFileUpload !== 'undefined') {
     new MOJFrontend.MultiFileUpload({
       container: $('.moj-multi-file-upload'),
-      uploadUrl: '#',
-      deleteUrl: '#'
+      uploadUrl: '/ajax-upload',
+      deleteUrl: '/ajax-delete',
     });
   }
 </script>
