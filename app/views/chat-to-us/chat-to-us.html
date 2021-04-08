@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{%- from "moj/components/messages/macro.njk" import mojMessages -%}
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{%- from "moj/components/notification-badge/macro.njk" import mojNotificationBadge -%}
+
+{% block pageTitle %}
+Chat to us
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <h1 class="govuk-heading-xl">Payment correspondance</h1>
+
+  <div class="govuk-grid-column-one-third">
+
+    {{ mojSideNavigation({
+      label: 'Side navigation',
+      sections: [{
+        heading: {
+        text: 'Payment'
+      },
+      items: [{
+        text: 'Payment correspondance',
+        href: '#',
+        active: true
+      }, {
+        text: 'Payment details',
+        href: '#1.2'
+      }]
+      },
+      {
+        heading: {
+        text: 'Personal details'
+      },
+      items: [{
+        text: 'Address',
+        href: '#'
+      }, {
+        text: 'Next of kin',
+        href: '#'
+      }]
+      }
+      ]
+    }) }}
+
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <p>Unread messages: <span id="notifications" class="moj-notification-badge">1</span></p>
+
+    {{ mojMessages({
+    items: [
+    {
+    text: 'I can confirm that payment was received on the 12th February. Is there anything else I can help you with?',
+    type: 'sent',
+    timestamp: '2019-03-16T10:50:00.000Z',
+    sender: 'Mark Smith'
+    },
+    {
+    text: 'Thank you - can you confirm the amount that was received?',
+    type: 'received',
+    timestamp: '2019-03-17T10:51:00.000Z',
+    sender: 'Jaz Sangha'
+    },
+    {
+    text: 'No problem. It was £14.26.',
+    type: 'sent',
+    timestamp: '2019-03-19T10:53:00.000Z',
+    sender: 'Mark Smith'
+    }
+    ]
+    }) }}
+  </div>
+</div>
+{% endblock %}

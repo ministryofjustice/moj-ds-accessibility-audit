@@ -1,0 +1,105 @@
+{%- from "moj/components/task-list/macro.njk" import mojTaskList -%}
+{%- from "moj/components/identity-bar/macro.njk" import mojIdentityBar -%}
+{% from "moj/components/button-menu/macro.njk" import mojButtonMenu %}
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Create an account – Check password
+{% endblock %}
+
+{% block header %}
+{{ super() }}
+
+{{ mojIdentityBar({
+title: {
+html: "<b>Jane Wolenksy</b>"
+},
+menus: [{
+items: [
+{
+text: 'Change client',
+href: 'change-client'
+}]
+}]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl govuk-!-margin-top-6">
+      Task list
+    </h1>
+
+        {{ mojTaskList({
+        sections: [
+        {
+          heading: {
+            text: 'Client details'
+          },
+          items: [{
+            text: 'Personal details',
+            href: '#'
+          }, {
+            text: 'What you are covered for',
+            href: '#',
+            complete: true
+          }]
+        },
+        {
+          heading: {
+            text: 'Means assessment'
+          },
+          items: [{
+            text: 'Bank account details',
+            href: '#'
+          }, {
+            text: 'Income',
+            href: 'income'
+          }]
+        },
+        {
+          heading: {
+            text: 'Merrits assessment'
+          },
+          items: [{
+            text: 'Incident details',
+            href: '#'
+          }, {
+            text: 'Respondent details',
+            href: '#',
+            complete: true
+          }, {
+            text: 'Case details',
+            href: '#',
+            complete: true
+          }]
+        }
+      ]
+    })
+  }}
+
+  {{ mojButtonMenu({
+    items: [{
+    text: "Add another client",
+    href: "#"
+    }, {
+    text: "Delete client",
+    href: "#",
+    classes: "govuk-button--secondary"
+    }, {
+    text: "Return to home page",
+    href: "index",
+    classes: "govuk-button--secondary"
+    }]
+  }) }}
+
+
+  </div>
+</div>
+
+{% endblock %}
